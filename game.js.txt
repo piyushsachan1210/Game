@@ -1,0 +1,80 @@
+
+let sign = "X"
+
+let disp = document.getElementById("player");
+
+function nextturn(number){
+    let pick = document.getElementById("b"+number);
+    console.log(pick);
+    if(pick.innerText==""){
+        pick.innerText=sign;
+		winner();
+		verifysign();
+        disp.innerHTML= "Its " + sign + "'s turn!"
+		
+    }
+}
+
+function verifysign(){
+    if(sign=="X")sign = "O";
+    else sign = "X";
+}
+
+function getbox(no){
+	return document.getElementById("b"+no).innerHTML;
+}
+function verifymove(a,b,c,m){
+    if(getbox(a)==m && getbox(b)==m && getbox(c)==m)
+       return true;
+       else return false;
+	
+}
+
+function winner(){
+if(verifymove(1,2,3,sign)||
+   verifymove(4,5,6,sign)||
+   verifymove(7,8,9,sign)||
+   verifymove(1,4,7,sign)||
+   verifymove(2,5,8,sign)||
+   verifymove(3,6,9,sign)||
+   verifymove(1,5,9,sign)||
+   verifymove(7,5,3,sign))
+   {
+	alert(sign + " has won the Game. Congratulations!!");
+	location.reload()
+	//disp.innerHTML = "<center>" +sign + " has won the Game. Congratulations!!" + "</center>";
+    for(let i=1;i<=9;i++){
+        document.getElementById("b"+i).innerHTML="";
+    }
+   throw "game end";
+	location.reload()
+	}else{
+		if(getbox(1)!=""&& getbox(2)!=""&& 
+		   getbox(3)!=""&& getbox(4)!=""&& 
+		   getbox(5)!=""&& getbox(6)!=""&&
+		   getbox(7)!=""&& getbox(8)!=""&& 
+		   getbox(9)!=""){
+
+			disp.innerHTML = "<center> It's a tie!! </center>";
+       throw "its a tie";
+	} 
+}
+}
+
+function gamestart(){
+var timeleft = 300;
+	document.getElementById("boardtable").style.display="";
+	document.getElementById("gmstart").style.display="none";
+	var interval = setInterval(function() {
+		timeleft--;
+		document.getElementById("countdowntimer").textContent = timeleft;
+		if (timeleft <= 0) 
+		clearInterval(interval), location.reload();
+}, 1000);
+
+}
+
+
+
+
+  

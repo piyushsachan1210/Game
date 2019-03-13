@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+		<style>
+        	.Board {
+            	width: 80px;
+                height: 80px;
+                text-align: center;
+                font-size: 30pt;
+                font-weight: bold;
+                font-family: Georgia;
+				background: LightGray;
+            }
+        </style>
+		<!--
+		1. Below function is for restarting the game.
+		2. This function is linked with the reset/stop Button to stop/reset the game.
+		 -->
+		<script>
+			function resetgame() {
+			location.reload();
+			}
+			<!--alert("The Game has restarted");-->
+			disp.innerHTML = "<center>"+ " The Game has restarted!" + "</center>";
+		</script>
+
+	</head>
+<body >
+<h1><font color="blue">Welcome to Tic Tac Toe Game!</font></h1>
+<h1 id="player">lets play!! Start from X's turn!</h1>
+		<div id="message" style="width=50px;">Time is 5 Minutes.</div>
+		<div class="timer">
+			<P><span class="minute">5 Minute(s): 5x60 Second(s)</span> = 300 Second(s)
+			<span id="countdowntimer"></span></p>
+        </div>
+	<table border="2" style= display:none id= boardtable>
+		<tr>
+			<th id="b1" class="Board" onclick="nextturn('1')"></th>
+			<th id="b2" class="Board" onclick="nextturn('2')"></th>
+			<th id="b3" class="Board" onclick="nextturn('3')"></th>
+		</tr>
+		<tr>
+			<th id="b4" class="Board" onclick="nextturn('4')"></th>
+			<th id="b5" class="Board" onclick="nextturn('5')"></th>
+			<th id="b6" class="Board" onclick="nextturn('6')"></th>
+		</tr>
+		<tr>
+			<th id="b7" class="Board" onclick="nextturn('7')"></th>
+			<th id="b8" class="Board" onclick="nextturn('8')"></th>
+			<th id="b9" class="Board" onclick="nextturn('9')"></th>
+		</tr>
+	</table>
+	<button id="gmstart"; onclick="gamestart();">Game Start</button>
+	<button id="rstgame" onclick="resetgame();">Reset/Stop</button>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
+	
+	<script src="game.js"></script>
+	<div> </div>
+	<div> Instructions/Details:		
+	<br>1. This is a Tic-Tac-Toe game.
+	<br>2. Two players "X" and "O" will be playing this game.
+	<br>3. First Player X will start the game and O's turn will come second.
+	<br>4. Click on "Game Start" button and Board/boxes will appear to play the game.
+	<br>5. Click on "Reset/Stop" button to reset or stop the Game. 
+	<br>6. 5 minutes timer will start once game will start.
+	<br>7. Game will reset after 5 minutes of starting the game.
+		
+	</div>
+</body>
+</html>
